@@ -16,4 +16,4 @@ A PhD in celestial mechanics.
 
 # What do I like
 
-Diving into my [hobbies](hobbies).
+Diving into my [hobbies](/hobbies).
