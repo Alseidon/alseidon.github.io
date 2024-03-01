@@ -1,9 +1,7 @@
 +++
 title = "Hobbies"
-hascode = true
-rss = "A short description of the page which would serve as **blurb** in a `RSS` feed; you can use basic markdown here but the whole description string must be a single line (not a multiline string). Like this one for instance. Keep in mind that styling is minimal in RSS so for instance don't expect maths or fancy styling to work; images should be ok though: ![](https://upload.wikimedia.org/wikipedia/en/b/b0/Rick_and_Morty_characters.jpg)"
-rss_title = "More goodies"
-rss_pubdate = Date(2019, 5, 1)
+hasmath = false
+date = Date("01/03/2024", "dd/mm/yyyy")
 
 tags = ["hobbies"]
 +++
@@ -25,7 +23,7 @@ I never really played the old 'pa Dungeons and Dragons, mostly diving in custom 
 
 ## Tabletop games
 
-Much tied to TTRPGs, tabletop games extend *much* further than the well-known Monopoly or Risk (which are universally despised in the tabletop community). Want some quick reflexion games ? The Crew, Regicide are card-based cooperative gems. Splendor, Akropolis, Patchwork are played in 20 to 40 minutes, and incredible games to discover the hobby -- a favorite of mine in this time length is Race for the Galaxy. For longer games, Terraforming Mars holds a special place at the top, whereas my personal best game of all times is Spirit Island, a 2-hour hardcore cooperative game where you will help an island to repel somme ill-intentioned invaders. But really, tabletop games come in all shapes and sizes, adaptable to everyone.
+Much tied to TTRPGs, tabletop games extend *much* further than the well-known Monopoly or Risk (which are almost universally despised in the tabletop community). Want some quick reflexion games ? The Crew, Regicide are card-based cooperative gems. Splendor, Akropolis, Patchwork are played in 20 to 40 minutes, and incredible games to discover the hobby -- a favorite of mine in this time length is Race for the Galaxy. For longer games, Terraforming Mars holds a special place at the top, whereas my personal best game of all times is Spirit Island, a 2-hour hardcore cooperative game where you will help an island to repel somme ill-intentioned invaders. But really, tabletop games come in all shapes and sizes, adaptable to everyone.
 
 I even tried some game designing, but more on that in the future (maybe)...
 

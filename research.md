@@ -1,8 +1,7 @@
 +++
 title = "Research"
-hascode = true
-rss = "Research test"
-rss_pubdate = Date(2023, 11, 24)
+hasmath = false
+date = Date("01/03/2024", "dd/mm/yyyy")
 
 tags = ["research"]
 +++
@@ -21,7 +20,7 @@ IMCCE internship. Celestial mechanics.
 
 # Around research
 
-- Organising Elbereth conférence
+- Soon organising [Elbereth conference](https://conference-elbereth.github.io/)
 - Cité des Sciences !
 - AstroCalcul (soon)
 

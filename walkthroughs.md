@@ -1,5 +1,10 @@
 +++
 title = "Walkthroughs"
+
+hasmath = false
+date = Date("01/03/2024", "dd/mm/yyyy")
+
+tags = ["walkthroughs"]
 +++
 
 
