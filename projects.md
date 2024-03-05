@@ -12,7 +12,7 @@ Mainly stuff I encountered during my studies.
 
 ## TaylorInterface.jl
 
-[TaylorInterface.jl](https://www.github.com/alseidon/TaylorInterface.jl) yey, soon in general registry (should take the time to do it soon). It's fast, it's easy, and it's in dire need of feedback - go take a look!
+[TaylorInterface.jl](https://www.github.com/alseidon/TaylorInterface.jl) is now in the general Julia registry, yey! Fast ODE integration, with integration of variation equations to an arbitrary order: it is a Julia interface to the powerful [taylor](https://github.com/joang/taylor2-dist) tool. It's fast, it's easy, and it's in dire need of feedback - go take a look!
 
 ## Rains of Castamere
 
