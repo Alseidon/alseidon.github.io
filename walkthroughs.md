@@ -4,7 +4,7 @@ title = "Walkthroughs"
 hasmath = false
 date = Date("01/03/2024", "dd/mm/yyyy")
 
-tags = ["walkthroughs"]
+tags = ["walkthrough", ]
 +++
 
 
@@ -22,7 +22,7 @@ Start simple, start with Ubuntu or affiliated. Rice it if you want!
 
 ## Installing Julia
 
-Not that complicated, and well-explained. A tip: use `juliaup`. Maybe an opinionated article about Julia?
+Not that complicated, and well-explained. A tip: use `juliaup`. Maybe an opinionated article about Julia? [link](/walkthrough/first_steps_julia)
 
 ## Setting up a web server (still unsuccessful)
 
@@ -39,3 +39,7 @@ Cf. taylor example
 ## Collection of Julia performance tips I found
 
 AllocCheck.jl, *read the [doc page](https://docs.julialang.org/en/v1/manual/performance-tips/) damn it*
+
+## Setting up this website
+
+I set up this website using [Franklin.jl](https://franklinjl.org/) and [Githup Pages](https://pages.github.com/). [See here](/walkthrough/website_with_franklin) for more info!
