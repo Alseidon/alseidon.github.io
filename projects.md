@@ -14,6 +14,10 @@ Mainly stuff I encountered during my studies.
 
 [TaylorInterface.jl](https://www.github.com/alseidon/TaylorInterface.jl) yey, soon in general registry (should take the time to do it soon). It's fast, it's easy, and it's in dire need of feedback - go take a look!
 
+## Rains of Castamere
+
+A digital version of a competitive card game prototype called Rains of Castamere by the excellent [Yves Charamel-Lenain](https://charajeux.wordpress.com/). No commercial use intended, please don't sue me! The project is done in Godot, and private for the moment. Will post more about it when it will be in a playable state.
+
 ## Black hole rendering
 
 Computer graphics course, MPRI. OpenGL, ray-tracing, very crude approach (mainly for educational purposes). Shaders are a ton of fun, you should try them out and mess with them.
