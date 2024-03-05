@@ -1,0 +1,65 @@
+<!doctype html> <!-- Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes Free for personal and commercial use under the MIT license https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE --> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/minimal-mistakes.css"> <link rel=stylesheet  href="/css/adjust.css"> <link rel=apple-touch-icon  sizes=180x180  href="/assets/favicons/apple-touch-icon.png"> <link rel=icon  type="image/png" sizes=32x32  href="/assets/favicons/favicon-32x32.png"> <link rel=icon  type="image/png" sizes=16x16  href="/assets/favicons/favicon-16x16.png"> <link rel=manifest  href="/assets/favicons/site.webmanifest"> <link rel=mask-icon  href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5"> <meta name=msapplication-TileColor  content="#da532c"> <meta name=theme-color  content="#ffffff"> <!--[if IE ]> <style> /* old IE unsupported flexbox fixes */ .greedy-nav .site-title { padding-right: 3em; } .greedy-nav button { position: absolute; top: 0; right: 0; height: 100%; } </style> <![endif]--> <title>Creating a website with Franklin.jl</title> <body class=layout--single > <div class=masthead > <div class=masthead__inner-wrap > <div class=masthead__menu > <nav id=site-nav  class=greedy-nav > <a class=site-title  href="/">Alexandre Prieur</a> <ul class=visible-links > <li class=masthead__menu-item ><a href="/research" >Research</a> <li class=masthead__menu-item ><a href="/projects" >Projects</a> <li class=masthead__menu-item ><a href="/hobbies" >Hobbies</a> <li class=masthead__menu-item ><a href="/walkthroughs/">Walkthroughs</a> </ul> <button class="greedy-nav__toggle hidden" type=button > <span class=visually-hidden >Toggle menu</span> <div class=navicon ></div> </button> <ul class="hidden-links hidden"></ul> </nav> </div> </div> </div> <div class=initial-content > <div id=main  role=main > <div class="sidebar sticky"> <div itemscope itemtype="https://schema.org/Person"> <div class=author__avatar > <img src="https://i.pinimg.com/originals/00/3b/f0/003bf01bd170cb73302bfd16c804ee81.jpg" alt="Septimia Zenobia" itemprop=image > </div> <div class=author__content > <h3 class=author__name  itemprop=name >Alexandre Prieur</h3> <p class=author__bio  itemprop=description >Lost between Julia and celestial mechanics.</p> <p><a href="/aboutme">About me!</a></p> </div> <div class=author__urls-wrapper > <button class="btn btn--inverse">Follow</button> <ul class="author__urls social-icons"> <li itemprop=homeLocation  itemscope itemtype="https://schema.org/Place"> <i class="fas fa-fw fa-map-marker-alt" aria-hidden=true ></i> <span itemprop=name >Paris, France</span> <li><a href="https://github.com/alseidon" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden=true ></i> GitHub</a> <li>alexandre.prieur [at] obspm.fr </ul> </div> </div> </div> <div class=franklin-content > <h1 id=creating_a_website_with_franklinjl ><a href="#creating_a_website_with_franklinjl" class=header-anchor >Creating a website with Franklin.jl</a></h1> <p>Franklin is a Julia package which helps with creating static websites in Julia. Let&#39;s see how to set a website up, and publish it with Github Pages&#33;</p> <div class=franklin-toc ><ol><li><a href="#creating_the_website">Creating the website</a><ol><li><a href="#installing_franklinjl">Installing Franklin.jl</a><li><a href="#first_website">First website&#33;</a></ol><li><a href="#publishing_the_github_page">Publishing the Github page</a><ol><li><a href="#version_control_git">Version control: git</a></ol><li><a href="#maintaining_and_checking_the_webpage">Maintaining and checking the webpage</a><li><a href="#troubleshooting">Troubleshooting</a></ol></div> <h2 id=creating_the_website ><a href="#creating_the_website" class=header-anchor >Creating the website</a></h2> <h3 id=installing_franklinjl ><a href="#installing_franklinjl" class=header-anchor >Installing Franklin.jl</a></h3> <p>If not already done, install Julia &#40;<a href="/walkthrough/first_steps_julia">see here</a> to see how&#41;.</p> <p>Enter the Julia REPL &#40;typing <code>julia</code> in a terminal&#41;. Type <code>&#93;</code> to enter Pkg mode &#40;<a href="https://docs.julialang.org/en/v1/stdlib/REPL/">the docs</a> explain quite well how to use the REPL&#41;. Then, writing</p> <pre><code class="julia hljs">add  Franklin</code></pre>
+<p>will install <code>Franklin.jl</code> for you. Yey&#33;</p>
+<h3 id=first_website ><a href="#first_website" class=header-anchor >First website&#33;</a></h3>
+<p>You can create a website as easily as this:</p>
+<pre><code class="julia hljs">julia&gt; <span class=hljs-keyword >using</span> Franklin
+julia&gt; newsite(<span class=hljs-string >&quot;MyFirstSite&quot;</span>)</code></pre>
+<p>Then, writing</p>
+<pre><code class="julia hljs">julia&gt; serve()</code></pre>
+<p>will start a server at <code>http://localhost:8000/</code> &#40;which can be stopped with <code>Ctrl&#43;C</code> in the terminal&#41;. Open this in your browser and tadam, you have a website&#33;</p>
+<p>It won&#39;t be beautiful though. To fix this, choose a template <a href="https://tlienart.github.io/FranklinTemplates.jl/">over there</a>; I am using Minimal Mistakes. Now type this in the REPL &#40;replacing <code>my_template</code> with your choice&#41;:</p>
+<pre><code class="julia hljs">julia&gt; newsite(<span class=hljs-string >&quot;MyFirstSite&quot;</span>, template=<span class=hljs-string >&quot;my_template&quot;</span>)</code></pre>
+<p>Now, you can start filling you website with anything you want&#33; Follow the <a href="https://franklinjl.org/">Franklin docs</a> &#40;which actually explain what I&#39;m writing here in greater detail&#41; and you template&#39;s docs to create the website.</p>
+<h2 id=publishing_the_github_page ><a href="#publishing_the_github_page" class=header-anchor >Publishing the Github page</a></h2>
+<h3 id=version_control_git ><a href="#version_control_git" class=header-anchor >Version control: git</a></h3>
+<p>Version control is incredibly useful, and easy to learn &#40;should write an article on that soon&#41;. I will assume here that you have <code>git</code> installed, set up and linked with your Github account. Go to <a href="https://www.github.com">github.com</a>, and create an empty repository with the name <code>username.github.io</code>, replacing <code>username</code> with your actual username in lowercase.</p>
+<p>Now, open a terminal in your local website&#39;s folder, and type:</p>
+<pre><code class="bash hljs">$ git init
+$ git add .
+$ git commit -m <span class=hljs-string >&quot;First commit&quot;</span>
+$ git branch -M main
+$ git remote add origin git@github.com:Username/username.github.io.git
+$ git push -u origin main</code></pre>
+<p>again replacing <code>Username</code> and <code>username</code> with your username, real and lowercased.</p>
+<p>Franklin defined for you &#40;in the <code>.github/workflows</code> folder&#41; a Github action triggering every time you push commits to the remote repository. This will deploy your website to the <code>gh-pages</code> branch; we only have have to tell Github to get the files there. On the main Github page of your repo, you must wait for the orange circle to become a green check, indicating that the Github Action finished.</p>
+<p>Go to <code>https://github.com/Username/username.github.io/settings/pages</code> &#40;again, replacing <code>username</code> etc.&#41;, scroll down to <code>Build and deployment</code>. <code>Source</code> should be set to <code>Deploy from a branch</code> and <code>Branch</code> to <code>gh-pages</code> &#40;leaving the second selection to <code>/ &#40;root&#41;</code>&#41;. You website should be up very soon &#40;in a few seconds for me&#41; at <code>https://username.github.io</code>; congratulations, you now have a personal webpage&#33;</p>
+<h2 id=maintaining_and_checking_the_webpage ><a href="#maintaining_and_checking_the_webpage" class=header-anchor >Maintaining and checking the webpage</a></h2>
+<ul>
+<li><p>Create correct favicon with <a href="https://realfavicongenerator.net/">Real Favicon checker</a>, then check with <a href="https://realfavicongenerator.net/favicon_checker">the checker</a></p>
+
+<li><p>Check for broken links with <a href="https://github.com/stevenvachon/broken-link-checker#readme">broken-link-checker</a></p>
+
+</ul>
+<h2 id=troubleshooting ><a href="#troubleshooting" class=header-anchor >Troubleshooting</a></h2>
+<p>Again, the <a href="https://franklinjl.org/">Franklin docs</a> are great, so give them a go if you lack some information &#40;<a href="https://franklinjl.org/workflow/deploy/#deploying_on_github">here</a> for the deployment to Github pages&#41;</p>
+<div class=page-foot >
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Alexandre Prieur. Last modified: March 05, 2024.
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+</div>
+</div>
+
+      </div> 
+    </div>   
+
+    <div class=page__footer >
+      <footer>
+        
+        
+        <div class=page__footer-follow >
+          <ul class=social-icons >
+            <li><strong>Follow:</strong>
+            
+            <li><a href="https://github.com/alseidon" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden=true ></i> GitHub</a>
+          </ul>
+        </div>
+        <div class=page__footer-copyright >&copy; Alexandre Prieur. Powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel=nofollow >Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="/libs/minimal-mistakes/main.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin=anonymous ></script>
+
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
