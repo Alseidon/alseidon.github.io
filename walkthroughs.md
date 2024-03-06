@@ -20,6 +20,10 @@ So! Dearest reader, I wouldn't want that to happen to you. Thus, I will try to g
 
 Start simple, start with Ubuntu or affiliated. Rice it if you want!
 
+## Improving Linux
+
+[Better Linux basic commands](/walkthrough/useful_linux_commands)
+
 ## Installing Julia
 
 Not that complicated, and well-explained. A tip: use `juliaup`. Maybe an opinionated article about Julia? [link](/walkthrough/first_steps_julia)
