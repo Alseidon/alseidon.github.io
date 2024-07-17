@@ -42,7 +42,7 @@ Cf. taylor example
 
 ## Collection of Julia performance tips I found
 
-AllocCheck.jl, *read the [doc page](https://docs.julialang.org/en/v1/manual/performance-tips/) damn it*
+AllocCheck.jl, read the [doc page](https://docs.julialang.org/en/v1/manual/performance-tips/), it's great!
 
 ## Setting up this website
 
