@@ -12,7 +12,7 @@ Physics. Space, astronomy. Computer science.
 
 ## Currently
 
-PhD at [IMCCE](https://www.imcce.fr), Observatoire de Paris, under supervision of [Jacques Fejoz](https://www.ceremade.dauphine.fr/~fejoz/) and [Philippe Robutel](https://cv.hal.science/philippe-robutel): "Theoretical and numerical study of reccurent dynamics in dynamical systems and application to the N-body problem".
+PhD at [LTE](https://lte.observatoiredeparis.psl.eu/) (ex-IMCCE), Observatoire de Paris, under supervision of [Jacques Fejoz](https://www.ceremade.dauphine.fr/~fejoz/) and [Philippe Robutel](https://cv.hal.science/philippe-robutel): "Theoretical and numerical study of reccurent dynamics in dynamical systems and application to the N-body problem". [Link to the PhD page.](https://theses.fr/s367065)
 
 ## Astrophysics
 
@@ -24,10 +24,12 @@ IMCCE internship. Celestial mechanics.
 
 ## Around research
 
-- Soon organising [Elbereth conference](https://conference-elbereth.github.io/)
-- Cité des Sciences !
-- AstroCalcul (soon)
+- Organizer (treasurer) of the [Elbereth conference](https://conference-elbereth.github.io/)
+- Science outreach at the [Cité des Sciences et de l'Industrie](https://www.cite-sciences.fr/fr/accueil/)
+- Co-organizer of AstroCalcul (seminar about scientific computing in astrophysics and astronomy).
+- Organizer of the [Julia in Paris meetup](https://www.meetup.com/fr-FR/julia-paris/).
+- Member of the organizing committee of [JuliaCon Local Paris 2025](https://juliacon.org/local/paris2025/).
 
 ## Julia
 
-Automatic differentiation. Experience with Python. Pluto!!
+Automatic differentiation. Experience with Python. Pluto!! Wrote [TaylorInterface.jl](https://www.github.com/alseidon/TaylorInterface.jl).
