@@ -12,7 +12,7 @@ tags = ["walkthrough", ]
 
 Over the course of the last years, I experimented lots of stuff, mainly with computers and affiliated -- actually, making this website was such an experiment. Sometimes, a YouTube tutorial or a detailed guide gave me the exact steps to follow in order to succeed, simply and swiftly. Some other times, it was one or multiple obscure forum answers from a decade ago that unexpectedly helped me. And in some occasions... I got completely stuck.
 
-So! Dearest reader, I wouldn't want that to happen to you. Thus, I will try to give some of the help I received from the (almost) all-knowing Internet back, and write about my aforementioned experimented. So, let's walk together on some of the tracks I traced.
+So! Dearest reader, I wouldn't want that to happen to you. Thus, I will try to give some of the help I received from the (almost) all-knowing Internet back, and write about my aforementioned experiments. So, let's walk together on some of the tracks I traced.
 
 \toc
 
