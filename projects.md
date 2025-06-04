@@ -20,14 +20,8 @@ A digital version of a competitive card game prototype called Rains of Castamere
 
 ## Black hole rendering
 
-Computer graphics course, MPRI. OpenGL, ray-tracing, very crude approach (mainly for educational purposes). Shaders are a ton of fun, you should try them out and mess with them.
+Computer graphics course, [MPRI](https://wikimpri.dptinfo.ens-cachan.fr/doku.php). OpenGL, ray-tracing, very crude approach (mainly for educational purposes). Shaders are a ton of fun, you should try them out and mess with them.
 
 ## Lykeion
 
 Academic forum, somewhere between arXiv and StackOverflow. Hopefully, a replacement to peer-reviewed blood-suckers - ehm, I mean scientific editors.
-
-| Heading 1 | Heading 2 | Heading 3 |
-|-----------|-----------|-----------|
-| LaTeX     | KaTeX     | MikTeX    |
-| LaTeX     | KaTeX     | MikTeX    |
-| LaTeX     | KaTeX     | MikTeX    |
