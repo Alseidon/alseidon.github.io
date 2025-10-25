@@ -18,11 +18,27 @@ So! Dearest reader, I wouldn't want that to happen to you. Thus, I will try to g
 
 ## Installing Linux
 
-Start simple, start with Ubuntu or affiliated. Rice it if you want!
+Start simple, start with Ubuntu or affiliated (personal recommendation: Linux Mint). Rice it if you want!
 
 ## Improving Linux
 
 [Better Linux basic commands](/walkthrough/useful_linux_commands)
+
+## Solving Linux questions
+
+### Finding out the current notification daemon
+
+- Find out who owns the notification bus (following [this link](https://unix.stackexchange.com/questions/379810/find-out-the-owner-of-a-dbus-service-name))
+```bash
+dbus-send --session --print-reply --dest=org.freedesktop.DBus / org.freedesktop.DBus.GetConnectionUnixProcessID string:org.freedesktop.Notifications
+```
+- This will give an integer, the PID (eg `3927`). Then:
+```bash
+ps -o 3927
+```
+replacing `3927` with your PID. Could probably do this with one line, but eh, if it works it works.
+
+TODO for me: understand the buses and Freedesktop.
 
 ## Installing Julia
 
