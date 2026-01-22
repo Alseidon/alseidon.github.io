@@ -1,0 +1,276 @@
+<!doctype html> <!-- Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes Free for personal and commercial use under the MIT license https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE --> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/katex/katex.min.css"> <link rel=stylesheet  href="/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/minimal-mistakes.css"> <link rel=stylesheet  href="/css/adjust.css"> <link rel=apple-touch-icon  sizes=180x180  href="/assets/favicons/apple-touch-icon.png"> <link rel=icon  type="image/png" sizes=32x32  href="/assets/favicons/favicon-32x32.png"> <link rel=icon  type="image/png" sizes=16x16  href="/assets/favicons/favicon-16x16.png"> <link rel=manifest  href="/assets/favicons/site.webmanifest"> <link rel=mask-icon  href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5"> <meta name=msapplication-TileColor  content="#da532c"> <meta name=theme-color  content="#ffffff"> <!--[if IE ]> <style> /* old IE unsupported flexbox fixes */ .greedy-nav .site-title { padding-right: 3em; } .greedy-nav button { position: absolute; top: 0; right: 0; height: 100%; } </style> <![endif]--> <title>Visualising Marchal's family</title> <body class=layout--single > <div class=masthead > <div class=masthead__inner-wrap > <div class=masthead__menu > <nav id=site-nav  class=greedy-nav > <a class=site-title  href="/">Alexandre Prieur</a> <ul class=visible-links > <li class=masthead__menu-item ><a href="/research" >Research</a> <li class=masthead__menu-item ><a href="/talks" >Talks</a> <li class=masthead__menu-item ><a href="/projects" >Projects</a> <li class=masthead__menu-item ><a href="/walkthroughs/">Walkthroughs</a> </ul> <button class="greedy-nav__toggle hidden" type=button > <span class=visually-hidden >Toggle menu</span> <div class=navicon ></div> </button> <ul class="hidden-links hidden"></ul> </nav> </div> </div> </div> <div class=initial-content > <div id=main  role=main > <div class="sidebar sticky"> <div itemscope itemtype="https://schema.org/Person"> <div class=author__avatar > <img src="/assets/sunset_zelda.jpg" alt="Alexandre portrait" itemprop=image > </div> <div class=author__content > <a href="/aboutme"><h3 class=author__name  itemprop=name >Alexandre Prieur</h3> <p class=author__bio  itemprop=description >Lost between Julia and celestial mechanics.</p> <p>About me!</p></a> </div> <div class=author__urls-wrapper > <button class="btn btn--inverse">Follow</button> <ul class="author__urls social-icons"> <li itemprop=homeLocation  itemscope itemtype="https://schema.org/Place"> <i class="fas fa-fw fa-map-marker-alt" aria-hidden=true ></i> <span itemprop=name >Paris, France</span> <li><a href="https://github.com/alseidon" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden=true ></i> GitHub</a> <li>alexandre.prieur [at] obspm.fr </ul> </div> </div> </div> <div class=franklin-content > <h1 id=visualising_marchals_family ><a href="#visualising_marchals_family" class=header-anchor >Visualising Marchal&#39;s family</a></h1> <p>In a few <a href="/talks">talks</a>, I presented a visualisation of what I call the <em>Marchal family</em> of quasi-periodic orbits. This visualisation was done in <a href="https://makie.org">GLMakie</a>, a great <a href="https://www.julialang.org">Julia</a> package for advanced interactive visualisation.</p> <p>Below, I show the code for the visualisation, which is 276 lines long; the <code>#region</code>, <code>#endregion</code> and <code>##</code> comments are for ease of use within VS Code with the Julia extension. The imported data is a file of about 250 Mo; I have no convenient way of sharing it right now; however, if you contact me I will gladly share it&#33;</p> <p>The <code>Project.toml</code> is really short:</p> <pre><code class="toml hljs"><span class=hljs-section >[deps]</span>
+<span class=hljs-attr >GLMakie</span> = <span class=hljs-string >&quot;e9467ef8-e4e7-5192-8a1a-b1aee30e663a&quot;</span></code></pre> <p>And here is the code:</p> <pre><code class="julia hljs"><span class=hljs-comment >#region Setup</span>
+dir = <span class=hljs-meta >@__DIR__</span>
+<span class=hljs-keyword >using</span> Pkg; Pkg.activate(dir)
+<span class=hljs-keyword >using</span> GLMakie
+<span class=hljs-keyword >using</span> JLD
+<span class=hljs-keyword >using</span> StaticArrays
+
+Makie.inline!(<span class=hljs-literal >false</span>)
+set_theme!(Theme(fontsize = <span class=hljs-number >24</span>))
+
+
+<span class=hljs-keyword >function</span> rot1(θ)
+    <span class=hljs-keyword >return</span> <span class=hljs-meta >@SMatrix</span>(
+    [<span class=hljs-number >1</span>      <span class=hljs-number >0</span>      <span class=hljs-number >0</span>;
+     <span class=hljs-number >0</span> cos(θ) -sin(θ);
+     <span class=hljs-number >0</span> sin(θ)  cos(θ)])
+<span class=hljs-keyword >end</span>
+
+<span class=hljs-keyword >function</span> rot3(θ)
+    <span class=hljs-keyword >return</span> <span class=hljs-meta >@SMatrix</span>(
+    [cos(θ)  -sin(θ)  <span class=hljs-number >0</span>;
+     sin(θ)   cos(θ)  <span class=hljs-number >0</span>;
+          <span class=hljs-number >0</span>        <span class=hljs-number >0</span>  <span class=hljs-number >1</span>])
+<span class=hljs-keyword >end</span>
+acos_clamped(val) = acos(clamp(val, -<span class=hljs-number >1</span>, <span class=hljs-number >1</span>))
+
+masses(ε_m) = (<span class=hljs-number >1</span>-<span class=hljs-number >2</span>ε_m, ε_m, ε_m)
+
+vec_arr3_to_arr4(vec) = [vec[i][j, k, l] <span class=hljs-keyword >for</span>
+    i <span class=hljs-keyword >in</span> eachindex(vec), j <span class=hljs-keyword >in</span> axes(vec[<span class=hljs-number >1</span>], <span class=hljs-number >1</span>),
+    k <span class=hljs-keyword >in</span> axes(vec[<span class=hljs-number >1</span>], <span class=hljs-number >2</span>), l <span class=hljs-keyword >in</span> axes(vec[<span class=hljs-number >1</span>], <span class=hljs-number >3</span>)
+]
+
+arr3_vec_to_arr4(arr) = [arr[i, j, k][l] <span class=hljs-keyword >for</span>
+    i <span class=hljs-keyword >in</span> axes(arr, <span class=hljs-number >1</span>), j <span class=hljs-keyword >in</span> axes(arr, <span class=hljs-number >2</span>),
+    k <span class=hljs-keyword >in</span> axes(arr, <span class=hljs-number >3</span>), l <span class=hljs-keyword >in</span> eachindex(arr[<span class=hljs-number >1</span>, <span class=hljs-number >1</span>, <span class=hljs-number >1</span>])
+]
+
+
+<span class=hljs-keyword >function</span> hill2cart_helio_norot(x, masses)
+    rt1, rt2, G1, G2, r1, r2, w1, w2, C, Ω<span class=hljs-number >1</span> = x
+    x_cart = zeros(eltype(x), <span class=hljs-number >18</span>)
+    J = acos_clamped((C^<span class=hljs-number >2</span> - G1^<span class=hljs-number >2</span> - G2^<span class=hljs-number >2</span>) / (<span class=hljs-number >2</span> * G1 * G2))
+    <span class=hljs-comment ># rt1 *= (masses[1] + masses[2]) / masses[2]</span>
+    <span class=hljs-comment ># rt2 *= (masses[1] + masses[3]) / masses[3]</span>
+    <span class=hljs-comment ># G1  *= (masses[1] + masses[2]) / masses[2]</span>
+    <span class=hljs-comment ># G2  *= (masses[1] + masses[3]) / masses[3]</span>
+    i1 = acos_clamped((G1 + G2 * cos(J)) / C)
+    i2 = acos_clamped((G2 + G1 * cos(J)) / C)
+    <span class=hljs-comment >#i1 = J / 2</span>
+    <span class=hljs-comment >#i2 = J / 2</span>
+    Ω<span class=hljs-number >2</span> = Ω<span class=hljs-number >1</span> + <span class=hljs-literal >π</span>
+    R1 = rot3(Ω<span class=hljs-number >1</span>) * rot1(i1) * [r1 * cos(w1), r1 * sin(w1), <span class=hljs-number >0</span>]
+    R2 = rot3(Ω<span class=hljs-number >2</span>) * rot1(i2) * [r2 * cos(w2), r2 * sin(w2), <span class=hljs-number >0</span>]
+    Rt1 = rot3(Ω<span class=hljs-number >1</span>) * rot1(i1) * rot3(w1) * [rt1, G1/r1, <span class=hljs-number >0</span>]
+    Rt2 = rot3(Ω<span class=hljs-number >2</span>) * rot1(i2) * rot3(w2) * [rt2, G2/r2, <span class=hljs-number >0</span>]
+    <span class=hljs-comment >#= Rt1 = rot3(Ω1) * rot1(i1) * [
+              rt1 * cos(w1) - G1 * sin(w1) / r1,
+              rt1 * sin(w1) + G1 * cos(w1) / r1,
+              0
+          ]
+    Rt2 = rot3(Ω2) * rot1(i2) * [
+              rt2 * cos(w2) - G2 * sin(w2) / r2,
+              rt2 * sin(w2) + G2 * cos(w2) / r2,
+              0
+          ] =#</span>
+    x_cart[<span class=hljs-number >4</span>:<span class=hljs-number >6</span>] = R1
+    x_cart[<span class=hljs-number >7</span>:<span class=hljs-number >9</span>] = R2
+    x_cart[<span class=hljs-number >13</span>:<span class=hljs-number >15</span>] = Rt1<span class=hljs-comment ># ./ masses[2]</span>
+    x_cart[<span class=hljs-number >16</span>:<span class=hljs-number >18</span>] = Rt2<span class=hljs-comment ># ./ masses[3]</span>
+    <span class=hljs-keyword >return</span> x_cart
+<span class=hljs-keyword >end</span>
+
+<span class=hljs-keyword >function</span> hill2cart_helio_draconitic(x, masses)
+    <span class=hljs-keyword >return</span> hill2cart_helio_norot(vcat(x[<span class=hljs-number >1</span>:<span class=hljs-number >9</span>], <span class=hljs-number >0.</span>), masses)
+<span class=hljs-keyword >end</span>
+
+<span class=hljs-keyword >function</span> hill2cart_bary(x, masses)
+    x_cart = hill2cart_helio_norot(x, masses)
+    m0, m1, m2 = masses
+    x_bary = zero(x_cart)
+    x_bary[<span class=hljs-number >4</span>:<span class=hljs-number >6</span>] = x_cart[<span class=hljs-number >4</span>:<span class=hljs-number >6</span>] - (m2 / (m0 + m2)) * x_cart[<span class=hljs-number >7</span>:<span class=hljs-number >9</span>]
+    x_bary[<span class=hljs-number >4</span>:<span class=hljs-number >6</span>] ./= (<span class=hljs-number >1</span> + m1/(m0+m2))
+    x_bary[<span class=hljs-number >7</span>:<span class=hljs-number >9</span>] = x_cart[<span class=hljs-number >7</span>:<span class=hljs-number >9</span>] - (m1 / (m0 + m1)) * x_cart[<span class=hljs-number >4</span>:<span class=hljs-number >6</span>]
+    x_bary[<span class=hljs-number >7</span>:<span class=hljs-number >9</span>] ./= (<span class=hljs-number >1</span> + m2/(m0+m1))
+    x_bary[<span class=hljs-number >1</span>:<span class=hljs-number >3</span>] = -(m1 * x_bary[<span class=hljs-number >4</span>:<span class=hljs-number >6</span>] + m2 * x_bary[<span class=hljs-number >7</span>:<span class=hljs-number >9</span>]) / m0
+    x_bary[<span class=hljs-number >13</span>:<span class=hljs-number >15</span>] = x_cart[<span class=hljs-number >13</span>:<span class=hljs-number >15</span>]
+    x_bary[<span class=hljs-number >16</span>:<span class=hljs-number >18</span>] = x_cart[<span class=hljs-number >16</span>:<span class=hljs-number >18</span>]
+    x_bary[<span class=hljs-number >10</span>:<span class=hljs-number >12</span>] = -(x_bary[<span class=hljs-number >13</span>:<span class=hljs-number >15</span>] + x_bary[<span class=hljs-number >16</span>:<span class=hljs-number >18</span>])
+    <span class=hljs-keyword >return</span> x_bary
+<span class=hljs-keyword >end</span>
+
+<span class=hljs-keyword >function</span> rot3_point(vec, angle)
+    <span class=hljs-keyword >return</span> reduce(vcat,
+        [rot3(angle) * vec[<span class=hljs-number >3</span>i .+ (<span class=hljs-number >1</span>:<span class=hljs-number >3</span>)] <span class=hljs-keyword >for</span> i <span class=hljs-keyword >in</span> <span class=hljs-number >0</span>:<span class=hljs-number >5</span>]
+    )
+<span class=hljs-keyword >end</span>
+
+<span class=hljs-keyword >function</span> rot3_trajs_arr4(trajs, angles)
+    <span class=hljs-keyword >return</span> [
+        rot3_point(trajs[i, j, k, :], angles[i, j, k])
+        <span class=hljs-keyword >for</span> i <span class=hljs-keyword >in</span> axes(trajs, <span class=hljs-number >1</span>), j <span class=hljs-keyword >in</span> axes(trajs, <span class=hljs-number >2</span>), k <span class=hljs-keyword >in</span> axes(trajs, <span class=hljs-number >3</span>)
+    ] |&gt; arr3_vec_to_arr4
+<span class=hljs-keyword >end</span>
+
+<span class=hljs-comment >#endregion</span>
+<span class=hljs-comment >##</span>
+
+<span class=hljs-comment >#region Load trajectories</span>
+data_trajs_file = joinpath(dir, <span class=hljs-string >&quot;data&quot;</span>, <span class=hljs-string >&quot;data_trajs_eps_01_33_J_000_160.jld&quot;</span>)
+
+data_trajs = load(data_trajs_file)
+vec_ts = data_trajs[<span class=hljs-string >&quot;vec_ts&quot;</span>]
+vec_ε_m = data_trajs[<span class=hljs-string >&quot;vec_ε_m&quot;</span>]
+vec_Js = data_trajs[<span class=hljs-string >&quot;vec_Js&quot;</span>]
+arr_eigvals = data_trajs[<span class=hljs-string >&quot;arr_eigvals&quot;</span>]
+arr_trajs = data_trajs[<span class=hljs-string >&quot;arr_trajs&quot;</span>]
+
+<span class=hljs-comment >##</span>
+
+vec_masses = [masses(eps_m) <span class=hljs-keyword >for</span> eps_m <span class=hljs-keyword >in</span> vec_ε_m]
+
+trajs_helio_draco = [
+    hill2cart_helio_draconitic(arr_trajs[ieps, iJ, it, :], vec_masses[ieps])
+    <span class=hljs-keyword >for</span> ieps <span class=hljs-keyword >in</span> eachindex(vec_ε_m), iJ <span class=hljs-keyword >in</span> eachindex(vec_Js), it <span class=hljs-keyword >in</span> eachindex(vec_ts)
+] |&gt; arr3_vec_to_arr4
+trajs_helio_norot = [
+    hill2cart_helio_norot(arr_trajs[ieps, iJ, it, :], vec_masses[ieps])
+    <span class=hljs-keyword >for</span> ieps <span class=hljs-keyword >in</span> eachindex(vec_ε_m), iJ <span class=hljs-keyword >in</span> eachindex(vec_Js), it <span class=hljs-keyword >in</span> eachindex(vec_ts)
+] |&gt; arr3_vec_to_arr4
+trajs_bary = [
+    hill2cart_bary(arr_trajs[ieps, iJ, it, :], vec_masses[ieps])
+    <span class=hljs-keyword >for</span> ieps <span class=hljs-keyword >in</span> eachindex(vec_ε_m), iJ <span class=hljs-keyword >in</span> eachindex(vec_Js), it <span class=hljs-keyword >in</span> eachindex(vec_ts)
+] |&gt; arr3_vec_to_arr4
+
+t_lag = <span class=hljs-number >1.</span>
+angles_antirot = [
+    (
+        <span class=hljs-number >2</span><span class=hljs-literal >π</span> - arr_trajs[ieps, iJ, <span class=hljs-keyword >end</span>, <span class=hljs-number >10</span>]
+    ) / t_lag * vec_ts[it] <span class=hljs-keyword >for</span> ieps <span class=hljs-keyword >in</span> eachindex(vec_ε_m), iJ <span class=hljs-keyword >in</span> eachindex(vec_Js), it <span class=hljs-keyword >in</span> eachindex(vec_ts)
+]
+trajs_bary_antirot = rot3_trajs_arr4(trajs_bary, angles_antirot);
+
+<span class=hljs-comment >##</span>
+arr_to_traj_points(arr_traj) = map(
+    i_body-&gt;[
+        Point3f(arr_traj[i, j, k, <span class=hljs-number >3</span>i_body .+ (<span class=hljs-number >1</span>:<span class=hljs-number >3</span>)]...)
+        <span class=hljs-keyword >for</span> i <span class=hljs-keyword >in</span> axes(arr_traj, <span class=hljs-number >1</span>), j <span class=hljs-keyword >in</span> axes(arr_traj, <span class=hljs-number >2</span>),
+            k <span class=hljs-keyword >in</span> axes(arr_traj, <span class=hljs-number >3</span>)
+    ],
+    <span class=hljs-number >0</span>:<span class=hljs-number >2</span>
+)
+
+traj_points_helio_draco = arr_to_traj_points(trajs_helio_draco)
+traj_points_helio_norot = arr_to_traj_points(trajs_helio_norot)
+traj_points_bary = arr_to_traj_points(trajs_bary)
+traj_points_bary_antirot = arr_to_traj_points(trajs_bary_antirot)
+
+traj_points = [
+    traj_points_helio_draco,
+    traj_points_helio_norot,
+    traj_points_bary,
+    traj_points_bary_antirot,
+];
+<span class=hljs-comment >#endregion</span>
+<span class=hljs-comment >##</span>
+
+<span class=hljs-comment >#region 3D figure</span>
+fig_3D = Figure()<span class=hljs-comment >#; backgroundcolor=:lightgrey)</span>
+ax_3D = Axis3(fig_3D[<span class=hljs-number >1</span>, <span class=hljs-number >1</span>])
+slider_3D = Slider(fig_3D[<span class=hljs-number >1</span>, <span class=hljs-number >2</span>];
+    range=eachindex(vec_Js),
+    horizontal=<span class=hljs-literal >false</span>,
+    linewidth=<span class=hljs-number >20</span>,
+    startvalue=<span class=hljs-number >1</span>
+)
+i_J = lift(identity, slider_3D.value)
+text_J = lift(i_J) <span class=hljs-keyword >do</span> iJ
+    <span class=hljs-keyword >return</span> <span class=hljs-string >&quot;J = <span class=hljs-subst >$(
+        round(rad2deg(vec_Js[iJ])</span>; sigdigits=3))°&quot;</span>
+<span class=hljs-keyword >end</span>
+label_3D = Label(fig_3D[<span class=hljs-number >2</span>, <span class=hljs-number >2</span>],
+    text_J
+)
+play_button = Button(fig_3D[<span class=hljs-number >2</span>, <span class=hljs-number >1</span>], label=<span class=hljs-string >&quot;Play&quot;</span>, tellwidth=<span class=hljs-literal >false</span>)
+is_playing = <span class=hljs-literal >false</span>
+end_n = length(vec_ts)
+<span class=hljs-keyword >function</span> play!(_)
+    <span class=hljs-keyword >if</span> !is_playing
+        <span class=hljs-meta >@async</span> <span class=hljs-keyword >for</span> i <span class=hljs-keyword >in</span> eachindex(vec_ts)
+            <span class=hljs-keyword >if</span> i == <span class=hljs-number >1</span>
+                <span class=hljs-keyword >global</span> is_playing = <span class=hljs-literal >true</span>
+            <span class=hljs-keyword >elseif</span> i == end_n
+                <span class=hljs-keyword >global</span> is_playing = <span class=hljs-literal >false</span>
+            <span class=hljs-keyword >end</span>
+            i_t[] = i
+            sleep(<span class=hljs-number >0.05</span>)
+        <span class=hljs-keyword >end</span>
+    <span class=hljs-keyword >end</span>
+<span class=hljs-keyword >end</span> 
+on(play!, play_button.clicks)
+on(events(ax_3D.scene).keyboardbutton) <span class=hljs-keyword >do</span> event
+    <span class=hljs-keyword >if</span> event.action == Keyboard.press || event.action == Keyboard.repeat
+        <span class=hljs-keyword >if</span> event.key == Keyboard.space
+            play!(<span class=hljs-literal >nothing</span>)
+        <span class=hljs-keyword >end</span>
+    <span class=hljs-keyword >end</span>
+<span class=hljs-keyword >end</span>
+
+slider_ε = Slider(
+    fig_3D[<span class=hljs-number >3</span>, <span class=hljs-number >1</span>];
+    range=eachindex(vec_ε_m),
+    horizontal=<span class=hljs-literal >true</span>,
+    linewidth=<span class=hljs-number >20</span>,
+    startvalue=<span class=hljs-number >1</span>
+)
+i_ε = lift(identity, slider_ε.value)
+text_ε = lift(i_ε) <span class=hljs-keyword >do</span> ieps
+    <span class=hljs-keyword >return</span> <span class=hljs-string >&quot;ε_m = <span class=hljs-subst >$(
+        round(vec_ε_m[ieps]; sigdigits=<span class=hljs-number >3</span>)</span>)&quot;</span>
+<span class=hljs-keyword >end</span>
+label_ε = Label(fig_3D[<span class=hljs-number >3</span>, <span class=hljs-number >2</span>], text_ε, tellwidth=<span class=hljs-literal >false</span>, width=<span class=hljs-number >160</span>)
+
+
+slider_typetraj = Slider(
+    fig_3D[<span class=hljs-number >4</span>, <span class=hljs-number >1</span>];
+    range=<span class=hljs-number >1</span>:<span class=hljs-number >4</span>,
+    horizontal=<span class=hljs-literal >true</span>,
+    linewidth=<span class=hljs-number >20</span>,
+    startvalue=<span class=hljs-number >1</span>
+)
+i_typetraj = lift(identity, slider_typetraj.value)
+text_typetraj = lift(i_typetraj) <span class=hljs-keyword >do</span> itraj
+    <span class=hljs-keyword >return</span> [<span class=hljs-string >&quot;Helio rotating&quot;</span>, <span class=hljs-string >&quot;Helio&quot;</span>, <span class=hljs-string >&quot;Bary&quot;</span>, <span class=hljs-string >&quot;Bary antirot&quot;</span>][itraj]
+<span class=hljs-keyword >end</span>
+label_typetraj = Label(fig_3D[<span class=hljs-number >4</span>, <span class=hljs-number >2</span>], text_typetraj)
+
+get_points(new_iJ, i_ε, i_traj, i_body) = traj_points[i_traj][i_body][
+    i_ε, new_iJ, :]
+plotted_mass0 = lift(
+    (iJ, ieps, i_traj)-&gt;get_points(iJ, ieps[], i_traj[], <span class=hljs-number >1</span>),
+    i_J, i_ε, i_typetraj)
+plotted_mass1 = lift(
+    (iJ, ieps, i_traj)-&gt;get_points(iJ, ieps[], i_traj[], <span class=hljs-number >2</span>),
+    i_J, i_ε, i_typetraj)
+plotted_mass2 = lift(
+    (iJ, ieps, i_traj)-&gt;get_points(iJ, ieps[], i_traj[], <span class=hljs-number >3</span>),
+    i_J, i_ε, i_typetraj)
+
+limits!(ax_3D, (-<span class=hljs-number >1.5</span>, <span class=hljs-number >1.5</span>), (-<span class=hljs-number >1.5</span>, <span class=hljs-number >1.5</span>), (-<span class=hljs-number >1.5</span>, <span class=hljs-number >1.5</span>))
+lines!(ax_3D, plotted_mass0; linewidth=<span class=hljs-number >1</span>)
+lines!(ax_3D, plotted_mass1; linewidth=<span class=hljs-number >1</span>)
+lines!(ax_3D, plotted_mass2; linewidth=<span class=hljs-number >1</span>)
+
+i_t = Observable(<span class=hljs-number >1</span>)
+points = lift(i_t, plotted_mass0, plotted_mass1, plotted_mass2) <span class=hljs-keyword >do</span> it, traj0, traj1, traj2
+    <span class=hljs-keyword >return</span> [traj0[i_t[]], traj1[i_t[]], traj2[i_t[]], traj0[i_t[]]]
+<span class=hljs-keyword >end</span>
+scatter!(ax_3D, points)
+lines!(ax_3D, points;
+    linestyle=:dash
+)
+
+
+fig_3D
+
+<span class=hljs-comment >##</span>
+<span class=hljs-keyword >for</span> i <span class=hljs-keyword >in</span> eachindex(vec_ts)
+    i_t[] = i
+    sleep(<span class=hljs-number >0.05</span>)
+<span class=hljs-keyword >end</span>
+<span class=hljs-comment >##</span>
+
+<span class=hljs-comment >#endregion</span>
+<span class=hljs-comment >##</span></code></pre> <div class=page-foot > <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Alexandre Prieur. Last modified: January 22, 2026. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>. </div> </div> </div> </div> <div class=page__footer > <footer> <div class=page__footer-follow > <ul class=social-icons > <li><strong>Follow:</strong> <li><a href="https://github.com/alseidon" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden=true ></i> GitHub</a> </ul> </div> <div class=page__footer-copyright >&copy; Alexandre Prieur. Powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel=nofollow >Minimal Mistakes</a>.</div> </footer> </div> <script src="/libs/minimal-mistakes/main.min.js"></script> <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin=anonymous ></script> <script src="/libs/highlight/highlight.min.js"></script> <script>hljs.highlightAll();hljs.configure({tabReplace: ' '});</script>
