@@ -2,74 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-    <loc>https://alseidon.github.io/walkthrough/first_steps_julia/index.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <loc>https://alseidon.github.io/personal/walkthrough/website_with_franklin/index.html</loc>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://alseidon.github.io/walkthroughs/index.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <loc>https://alseidon.github.io/personal/index.html</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://alseidon.github.io/personal/walkthrough/first_steps_julia/index.html</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://alseidon.github.io/personal/walkthroughs/index.html</loc>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://alseidon.github.io/aboutme/index.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://alseidon.github.io/talks/index.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://alseidon.github.io/hobbies/index.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <loc>https://alseidon.github.io/personal/hobbies/index.html</loc>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://alseidon.github.io/research/index.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://alseidon.github.io/walkthrough/website_with_franklin/index.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <loc>https://alseidon.github.io/personal/walkthrough/gdb_with_julia_compiler/index.html</loc>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://alseidon.github.io/walkthrough/gdb_with_julia_compiler/index.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <loc>https://alseidon.github.io/personal/walkthrough/useful_linux_commands/index.html</loc>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://alseidon.github.io/science/visualising_marchal_family/index.html</loc>
-    <lastmod>2026-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://alseidon.github.io/walkthrough/useful_linux_commands/index.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://alseidon.github.io/projects/index.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://alseidon.github.io/personal/walkthrough/setting_up_web_server/index.html</loc>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://alseidon.github.io/index/</loc>
-    <lastmod>2026-01-22</lastmod>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
