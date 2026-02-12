@@ -11,7 +11,7 @@ tags = ["research"]
 
 In a few [talks](/talks), I presented a visualisation of what I call the _Marchal family_ of quasi-periodic orbits. This visualisation was done in [GLMakie](https://makie.org), a great [Julia](https://www.julialang.org) package for advanced interactive visualisation.
 
-Below, I show the code for the visualisation, which is 276 lines long; the `#region`, `#endregion` and `##` comments are for ease of use within VS Code with the Julia extension. The imported data is a file of about 250 Mo; I have no convenient way of sharing it right now; however, if you contact me I will gladly share it!
+Below, I show the code for the visualisation, which is 276 lines long; the `#region`, `#endregion` and `##` comments are for ease of use within VS Code with the Julia extension. The imported data is in a 250 Mo file (`data_trajs_eps_01_33_J_000_160.jld` in the code below); I have no convenient way of sharing it right now; however, if you contact me I will gladly share it!
 
 The `Project.toml` is really short:
 ```toml

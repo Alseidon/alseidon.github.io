@@ -16,9 +16,9 @@ So! Dearest reader, I wouldn't want that to happen to you. Thus, I will try to g
 
 \toc
 
-## Installing Linux
+<!-- ## Installing Linux
 
-Start simple, start with Ubuntu or affiliated (personal recommendation: Linux Mint). Rice it if you want!
+Start simple, start with Ubuntu or affiliated (personal recommendation: Linux Mint). Rice it if you want! -->
 
 ## Improving Linux
 
@@ -40,26 +40,26 @@ replacing `3927` with your PID. Could probably do this with one line, but eh, if
 
 TODO for me: understand the buses and Freedesktop.
 
-## Installing Julia
+<!-- ## Installing Julia
 
-Not that complicated, and well-explained. A tip: use `juliaup`. Maybe an opinionated article about Julia? [link](/walkthrough/first_steps_julia)
+Not that complicated, and well-explained. A tip: use `juliaup`. Maybe an opinionated article about Julia? [link](/walkthrough/first_steps_julia) -->
 
 ## Setting up a web server (still unsuccessful)
 
 Easiest way for now : Apache2 on a Raspberry Pi.
 
-## GitHub
+<!-- ## GitHub
 
-GitHub, ssh key, core concepts of git.
+GitHub, ssh key, core concepts of git. -->
 
-## Add PPA repo, with the new, more secure way
+<!-- ## Add PPA repo, with the new, more secure way
 
-Cf. taylor example
+Cf. taylor example -->
 
-## Collection of Julia performance tips I found
+<!-- ## Collection of Julia performance tips I found
 
 AllocCheck.jl, read the [doc page](https://docs.julialang.org/en/v1/manual/performance-tips/), it's great!
-
+-->
 ## Setting up this website
 
 I set up this website using [Franklin.jl](https://franklinjl.org/) and [Githup Pages](https://pages.github.com/). [See here](/walkthrough/website_with_franklin) for more info!

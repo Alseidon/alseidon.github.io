@@ -7,15 +7,17 @@
 -->
 <html lang="en" class="no-js">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Alexandre Prieur</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+      document.documentElement.className =
+        document.documentElement.className.replace(/\bno-js\b/g, "") + " js ";
     </script>
     <!-- For all browsers -->
-    <link rel="stylesheet" href="/css/minimal-mistakes.css">
-    <!--[if IE ]>
+    <link rel="stylesheet" href="/css/minimal-mistakes.css" />
+    <link rel="stylesheet" href="/css/custom_alex.css" />
+    <!--[if IE]>
       <style>
         /* old IE unsupported flexbox fixes */
         .greedy-nav .site-title {
@@ -31,76 +33,151 @@
     <![endif]-->
     <!-- start custom head snippets -->
     <!-- insert favicons. use https://realfavicongenerator.net/ -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/assets/favicons/site.webmanifest">
-    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/favicons/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="/assets/favicons/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
     <!-- end custom head snippets -->
   </head>
-<body class="layout--splash">
-{{ insert masthead.html }}
+  <body class="layout--splash">
+    {{ insert masthead.html }}
 
-<div class="initial-content">
-  <div class="page__hero--overlay"
-    style="background-color: #5e616c; background-image: url('/assets/minimal-mistakes/stars_timelapse_jakub_novacek.jpg');">
-    <div class="wrapper">
-      <h1 id="page-title" class="page__title" itemprop="headline">Alexandre Prieur</h1>
-      <p class="page__lead">PhD student in celestial mechanics<br>LTE, Observatoire de Paris</p>
-    </div>
-  </div>
-
-  <div id="main" role="main">
-    <article class="splash" itemscope itemtype="https://schema.org/CreativeWork">
-      <meta itemprop="description" content="A flexible two-column Jekyll theme. Perfect for building personal sites, blogs, and portfolios. Latest release v4.16.4">
-      <section class="page__content" itemprop="text">
-        <div class="feature__wrapper">
-          <div class="feature__item">
-            <div class="archive__item">
-              <div class="archive__item-teaser">
-                <img src="/assets/astro_julia.png" alt="Astronomy x Julia" />
-              </div>
-              <div class="archive__item-body">
-                <h2 class="archive__item-title">About me</h2>
-                <div class="archive__item-excerpt">
-                  <p>How I fell in the rabbit hole of astronomy, mathematics and Julia</p>
-                </div>
-                <p><a href="/aboutme" class="btn btn--primary">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="feature__item">
-            <div class="archive__item">
-              <div class="archive__item-teaser">
-                <img src="/assets/orbites.png" alt="Three-body problem orbits" />
-              </div>
-              <div class="archive__item-body">
-                <h2 class="archive__item-title">Research</h2>
-                <div class="archive__item-excerpt">
-                  <p>Of celestial mechanics, dynamical systems and Julia computing.</p>
-                </div>
-                <p><a href="/research/" class="btn btn--primary">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="feature__item">
-            <div class="archive__item">
-              <div class="archive__item-teaser">
-                <img src="/assets/behourd.webp" alt="Armored fighting" />
-              </div>
-              <div class="archive__item-body">
-                <h2 class="archive__item-title">Hobbies</h2>
-                <div class="archive__item-excerpt">
-                  <p>If you have time to lose, dive into the random stuff I put there.</p>
-                </div>
-                <p><a href="/hobbies/" class="btn btn--primary">Learn more</a></p>
-              </div>
-            </div>
-          </div>
+    <div class="initial-content">
+      <div
+        class="page__hero--overlay"
+        style="
+          background-color: #5e616c;
+          background-image: url(&quot;/assets/minimal-mistakes/stars_timelapse_jakub_novacek.jpg&quot;);
+        "
+      >
+        <div class="wrapper">
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <span class="blur-bg">Alexandre Prieur</span>
+          </h1>
+          <p class="page__lead">
+            PhD student in celestial mechanics<br />LTE, Observatoire de Paris
+          </p>
+          <p class="page__lead" id="infobox_main">
+            I'm currently looking for a post-doctoral position anywhere in
+            Europe, from September 2026 onward! If you are interested, you can
+            contact me at
+            <span
+              style="
+                font-family:
+                  Monaco, Consolas, &quot;Lucida Console&quot;, monospace;
+              "
+              >alexandre.prieur at obspm.fr</span
+            >
+          </p>
         </div>
-      </section>
-    </article>
+      </div>
 
-    {{ insert foot.html }}
+      <div id="main" role="main">
+        <article
+          class="splash"
+          itemscope
+          itemtype="https://schema.org/CreativeWork"
+        >
+          <meta
+            itemprop="description"
+            content="A flexible two-column Jekyll theme. Perfect for building personal sites, blogs, and portfolios. Latest release v4.16.4"
+          />
+          <section class="page__content" itemprop="text">
+            <div class="feature__wrapper">
+              <div class="feature__item">
+                <div class="archive__item">
+                  <div class="archive__item-teaser">
+                    <img
+                      src="/assets/astro_julia.png"
+                      alt="Astronomy x Julia"
+                    />
+                  </div>
+                  <div class="archive__item-body">
+                    <h2 class="archive__item-title">About me</h2>
+                    <div class="archive__item-excerpt">
+                      <p>
+                        PhD student in celestial mechanics and numerical
+                        dynamical systems.
+                      </p>
+                    </div>
+                    <p>
+                      <a href="/aboutme" class="btn btn--primary">Learn more</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="feature__item">
+                <div class="archive__item">
+                  <div class="archive__item-teaser">
+                    <img
+                      src="/assets/orbites.png"
+                      alt="Three-body problem orbits"
+                    />
+                  </div>
+                  <div class="archive__item-body">
+                    <h2 class="archive__item-title">Research</h2>
+                    <div class="archive__item-excerpt">
+                      <p>
+                        Of celestial mechanics, dynamical systems and Julia
+                        computing.
+                      </p>
+                    </div>
+                    <p>
+                      <a href="/research/" class="btn btn--primary"
+                        >Learn more</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="feature__item">
+                <div class="archive__item">
+                  <div class="archive__item-teaser">
+                    <img src="/assets/behourd.webp" alt="Armored fighting" />
+                  </div>
+                  <div class="archive__item-body">
+                    <h2 class="archive__item-title">Personal</h2>
+                    <div class="archive__item-excerpt">
+                      <p>
+                        A melting pot of how I spend my free time. Currently in
+                        construction.
+                      </p>
+                    </div>
+                    <p>
+                      <a href="/personal" class="btn btn--primary"
+                        >Learn more</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        {{ insert foot.html }}
+      </div>
+    </div>
+  </body>
+</html>

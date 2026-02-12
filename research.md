@@ -1,40 +1,39 @@
 +++
 title = "Research"
 hasmath = false
-date = Date("01/03/2024", "dd/mm/yyyy")
+date = Date("12/02/2026", "dd/mm/yyyy")
 
 tags = ["research"]
 +++
 
 # Research
 
-Hi! I'm a long-time space and physics enthusiast, and I had the chance to realize my dream of... well, not going to space, but studying it!
+## Main interests
 
-Currently, I am a PhD student at the [LTE](https://lte.observatoiredeparis.psl.eu/) (ex-IMCCE) laboratory, at the Observatoire de Paris, under the supervision of [Jacques Fejoz](https://www.ceremade.dauphine.fr/~fejoz/) and [Philippe Robutel](https://cv.hal.science/philippe-robutel). Official name:
+- Numerical methods: numerical integration, automatic differentiation, optimisation
+- Dynamical systems: recurring dynamics, orbit stability
+- Celestial mechanics: solar system evolution, small bodies, long-term trajectories
 
-> "Theoretical and numerical study of reccurent dynamics in dynamical systems and application to the N-body problem"
+I focus on the interaction between various research domains, and always thrive to learn new subjects and methods to combine! For instance, I'd like to learn more about:
 
-And a [link to the PhD page](https://theses.fr/s367065). Main topics: celestial mechanics, dynamical systems, numerical computations.
+- Bifurcation theory
+- Computer-assisted proofs
+- Space debris
+- Planetary defense
 
-## Studies
 
-Before starting my PhD, I studied theoretical phyics at the [ENS](https://www.ens.psl.eu/), followed by a final master year at the Observatoire de Paris, with an emphasis on the mathematical aspect of astrophysics. I studied computer science as a secondary theme, especially compilation, reactive programming, computational topology and computer graphics (courses at the [Informatics Department of the ENS](https://www.di.ens.fr/), and the [MPRI](https://www.universite-paris-saclay.fr/en/education/master/computer-science/m2-parisian-computer-sciences-research-master)).
+## Programming skills
 
-# Around research
+### Julia: expert
 
-## Conferences and seminars
+[Julia](https://www.julialang.org) is my main language since 2022. I wrote [TaylorInterface.jl](https://www.github.com/alseidon/TaylorInterface.jl), and try to actively participate in the community (organizer of the [JuliaCon Local Paris 2025](https://juliacon.org/local/paris2025/) and the [Julia In Paris Meetup](https://www.meetup.com/fr-FR/julia-paris))
 
-- Co-chair of [JuliaCon Local Paris 2025](https://juliacon.org/local/paris2025/).
-- Organizer of the [Julia in Paris meetup](https://www.meetup.com/fr-FR/julia-paris/).
-- Organizer (treasurer) of the [Elbereth conference](https://conference-elbereth.github.io/)
-- Co-organizer of AstroCalcul (seminar about scientific computing in astrophysics and astronomy)
+### C: advanced
 
-## Scientific outreach
+I developed several projects in C, and interfaced the `taylor` integrator (which compiles to C code) with Julia.
 
-- Science outreach at the [Cité des Sciences et de l'Industrie](https://www.cite-sciences.fr/fr/accueil/)
-- A introductory roleplaying game (one-shot) about celestial mechanics! Currently in development and private testing.
-- Podcast with *Les Petits Reporters des Sciences*
-
-## Julia
-
-Automatic differentiation. Experience with Python. Pluto!! Wrote [TaylorInterface.jl](https://www.github.com/alseidon/TaylorInterface.jl). Also aforementioned conference and seminar.
+### Other languages
+- OCaml: intermediate
+- Python: intermediate
+- GDScript: intermediate
+- Notions of: Bash, C++, Rust, HTML/CSS, JavaScript...
