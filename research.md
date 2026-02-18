@@ -8,6 +8,8 @@ tags = ["research"]
 
 # Research
 
+@@colbox-blue [Get my CV here](/assets/cv_prieur.pdf)@@
+
 ## Main interests
 
 - Numerical methods: numerical integration, automatic differentiation, optimisation
