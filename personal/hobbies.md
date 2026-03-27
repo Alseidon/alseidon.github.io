@@ -13,7 +13,7 @@ OK. I like to do a lot of things. Often at the same time. Often, this time is  *
 
 ## Books
 
-And all kind of imagined story reading, really. Comics, webtoons, mangas... Favorite per style: Sanderson, Colossale, Always Human.
+And all kind of imagined story reading, really. Comics, webtoons, mangas... Favorite per style: Sanderson, Vandermeer, Colossale, Always Human.
 
 ## TTRPG
 
@@ -35,4 +35,8 @@ Designing and coding: Unity, then Godot.
 
 ## Music
 
-All styles. Symphonic, metal, rock, french "variété"... Even playing some piano.
+All styles. Symphonic, metal, rock, french "variété"... I'm also playing the piano (a tiny bit) and dancing (experimental) waltz whenever i can.
+
+## Sports
+
+On top of the waltz, I practiced a lot of HEMA (Historical European Martial Arts), and started archery recently!
