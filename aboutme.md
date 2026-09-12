@@ -12,9 +12,9 @@ Hi! I'm a long-time space and physics enthusiast, and I had the chance to realiz
 
 Currently, I am a PhD student at the [LTE](https://lte.observatoiredeparis.psl.eu/) (ex-IMCCE) laboratory, at the Observatoire de Paris, under the supervision of [Jacques Fejoz](https://www.ceremade.dauphine.fr/~fejoz/) and [Philippe Robutel](https://cv.hal.science/philippe-robutel). Official name:
 
-> "Theoretical and numerical study of reccurent dynamics in dynamical systems and application to the N-body problem"
+> "A three-body waltz: numerical search of recurring dynamics in the three-body problem"
 
-Here is the [link to the PhD page](https://theses.fr/s367065). Its main topics: celestial mechanics, dynamical systems, numerical computations.
+Here is the [link to the PhD page](https://theses.fr/s367065). Its main topics: celestial mechanics, dynamical systems, numerical computations. And a [link to the PhD thesis](/assets/phd_thesis.pdf) (not definitive version).
 
 @@colbox-blue I'm currently looking for a post-doctoral position anywhere in Europe, from September 2026 onward! If you are interested, you can contact me with the mail on the left.@@
 
