@@ -1,7 +1,7 @@
 +++
 title = "Talks"
 hasmath = true
-date = Date("21/01/2026", "dd/mm/yyyy")
+date = Date("15/09/2026", "dd/mm/yyyy")
 
 tags = ["research"]
 +++
@@ -10,7 +10,15 @@ tags = ["research"]
 
 \toc
 
-## Online, 13/07/2026 -- Marchal’s family of periodic orbits I: Stability of inclined co-orbital planetary systems
+## Marchal's family
+
+### San Martino al Cimino, 14/09/2026 -- Marchal's family: inclined co-orbitals in the three-body problem
+
+For the [CELMEC IX conference](https://ugolocatelli.github.io/celmec9.github.io/index.html).
+
+[PDF slides](assets/slides/2026_CELMEC_slides.pdf)
+
+### Online, 13/07/2026 -- Marchal’s family of periodic orbits I: Stability of inclined co-orbital planetary systems
 
 For the [CMDA Cassyni webinar](https://cassyni.com/events/242HAqiDaoa4hPGmBV61E5). Talk page is [here](https://doi.org/10.52843/cassyni.d8c9x3); recording available on the page and below (from 34:30 onward). Poor quality is because I was speaking from a train (high delays caused by wildfires in France at the time).
 
@@ -20,7 +28,7 @@ For the [CMDA Cassyni webinar](https://cassyni.com/events/242HAqiDaoa4hPGmBV61E5
 
 [PDF presentation](/assets/slides/2026_Cassyni_slides.pdf); 3D presentation is [the same](/science/visualising_marchal_family) as for Roma.
 
-## Roma, 22/01/2026 -- Marchal's family: inclined co-orbitals in the three-body problem
+### Roma, 22/01/2026 -- Marchal's family: inclined co-orbitals in the three-body problem
 
 For the [LYSM Workshop on Hamiltonian Dynamical Systems and Celestial Mechanics](https://indico.math.cnrs.fr/event/15295/)
 
@@ -28,7 +36,7 @@ For the [LYSM Workshop on Hamiltonian Dynamical Systems and Celestial Mechanics]
 
 The 3D visualisation is presented [here](/science/visualising_marchal_family).
 
-## Paris, 08/07/2025 -- Co-orbital configurations in the three-body problem: from Marchal's family to $P_{12}$
+### Paris, 08/07/2025 -- Co-orbital configurations in the three-body problem: from Marchal's family to $P_{12}$
 
 For the [Workshop in celestial mechanics in honor of Alain Albouy](https://www.ceremade.dauphine.fr/~fejoz/Colloques/2025%20Workshop%20in%20Celestial%20Mechanics/workshop.html)
 
