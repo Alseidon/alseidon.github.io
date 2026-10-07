@@ -12,6 +12,13 @@ tags = ["research"]
 
 ## Marchal's family
 
+### Paris, 23/09/2026 -- PhD Defence: A three-body waltz: numerical search for recurring dynamics in the three-body problem
+
+My PhD defence!
+
+[PDF slides](assets/PhD_Defence_Prieur_slides.pdf)
+
+
 ### San Martino al Cimino, 14/09/2026 -- Marchal's family: inclined co-orbitals in the three-body problem
 
 For the [CELMEC IX conference](https://ugolocatelli.github.io/celmec9.github.io/index.html).
