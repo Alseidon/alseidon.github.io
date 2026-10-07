@@ -10,13 +10,13 @@ tags = ["aboutme"]
 
 Hi! I'm a long-time space and physics enthusiast, and I had the chance to realize my dream of... well, not going to space, but studying it!
 
-Currently, I am a PhD student at the [LTE](https://lte.observatoiredeparis.psl.eu/) (ex-IMCCE) laboratory, at the Observatoire de Paris, under the supervision of [Jacques Fejoz](https://www.ceremade.dauphine.fr/~fejoz/) and [Philippe Robutel](https://cv.hal.science/philippe-robutel). Official name:
+Currently, I am a postdoctoral student in the "Nonlinear Dynamics" team of the [Centre de Physique Théorique](https://www.cpt.univ-mrs.fr/fr/), in [Toulon University](https://www.univ-tln.fr/).
+
+I defended my PhD thesis in September 2026 at the [LTE](https://lte.observatoiredeparis.psl.eu/) (ex-IMCCE) laboratory, at the Observatoire de Paris, under the supervision of [Jacques Fejoz](https://www.ceremade.dauphine.fr/~fejoz/) and [Philippe Robutel](https://cv.hal.science/philippe-robutel). Official name:
 
 > "A three-body waltz: numerical search of recurring dynamics in the three-body problem"
 
 Here is the [link to the PhD page](https://theses.fr/s367065). Its main topics: celestial mechanics, dynamical systems, numerical computations. And a [link to the PhD thesis](/assets/phd_thesis.pdf) (not definitive version).
-
-@@colbox-blue I'm currently looking for a post-doctoral position anywhere in Europe, from September 2026 onward! If you are interested, you can contact me with the mail on the left.@@
 
 ## Studies
 
